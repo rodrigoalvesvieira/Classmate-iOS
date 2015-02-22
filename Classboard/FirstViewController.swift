@@ -17,13 +17,26 @@ class FirstViewController: UIViewController, CameraDelegate {
     
     var camera: Camera?
     
+    @IBOutlet weak var cameraStill: UIImageView!
+    
     func initializeCamera() {
         self.camera = Camera(sender: self)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.initializeCamera()
+        
+        println("eu existo")
+        
+        self.camera?.captureStillImage({ (image) -> Void in
+            if image != nil {
+                self.cameraStill.image = image;
+                println("tirando foto")
+            } else {
+                println("ta nil")
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,7 +51,6 @@ class FirstViewController: UIViewController, CameraDelegate {
     }
     
     func cameraSessionDidBegin() {
-//        self.cameraStatus.text = ""
         UIView.animateWithDuration(0.225, animations: { () -> Void in
 //            self.cameraStatus.alpha = 0.0
 //            self.cameraPreview.alpha = 1.0
