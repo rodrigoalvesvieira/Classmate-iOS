@@ -15,33 +15,77 @@ enum Status: Int {
 
 class FirstViewController: UIViewController, CameraDelegate {
     
-    var camera: Camera?
-    
     @IBOutlet weak var cameraStill: UIImageView!
+    @IBOutlet weak var cameraPreview: UIView!
+    @IBOutlet weak var cameraStatus: UILabel!
+    @IBOutlet weak var cameraCapture: UIButton!
+    @IBOutlet weak var cameraCaptureShadow: UILabel!
     
-    func initializeCamera() {
-        self.camera = Camera(sender: self)
-    }
-
+    var preview: AVCaptureVideoPreviewLayer?
+    
+    var camera: Camera?
+    var status: Status = .Preview
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initializeCamera()
-        
-        println("eu existo")
-        
-        self.camera?.captureStillImage({ (image) -> Void in
-            if image != nil {
-                self.cameraStill.image = image;
-                println("tirando foto")
-            } else {
-                println("ta nil")
-            }
-        })
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.establishVideoPreviewArea()
+    }
+    
+    func initializeCamera() {
+        self.cameraStatus.text = "Starting Camera"
+        self.camera = Camera(sender: self)
+    }
+    
+    func establishVideoPreviewArea() {
+        self.preview = AVCaptureVideoPreviewLayer(session: self.camera?.session)
+        self.preview?.videoGravity = AVLayerVideoGravityResizeAspectFill
+        self.preview?.frame = self.cameraPreview.bounds
+        self.preview?.cornerRadius = 8.0
+        self.cameraPreview.layer.addSublayer(self.preview)
+    }
+    
+    // MARK: Button Actions
+    
+    @IBAction func captureFrame(sender: AnyObject) {
+        if self.status == .Preview {
+            self.cameraStatus.text = "Capturing Photo"
+            UIView.animateWithDuration(0.225, animations: { () -> Void in
+                self.cameraPreview.alpha = 0.0;
+                self.cameraStatus.alpha = 1.0
+            })
+            
+            self.camera?.captureStillImage({ (image) -> Void in
+                if image != nil {
+                    self.cameraStill.image = image;
+                    
+                    UIView.animateWithDuration(0.225, animations: { () -> Void in
+                        self.cameraStill.alpha = 1.0;
+                        self.cameraStatus.alpha = 0.0;
+                    })
+                    self.status = .Still
+                } else {
+                    self.cameraStatus.text = "Uh oh! Something went wrong. Try it again."
+                    self.status = .Error
+                }
+                
+                self.cameraCapture.setTitle("Reset", forState: UIControlState.Normal)
+            })
+        } else if self.status == .Still || self.status == .Error {
+            UIView.animateWithDuration(0.225, animations: { () -> Void in
+                self.cameraStill.alpha = 0.0;
+                self.cameraStatus.alpha = 0.0;
+                self.cameraPreview.alpha = 1.0;
+                self.cameraCapture.setTitle("Capture", forState: UIControlState.Normal)
+                }, completion: { (done) -> Void in
+                    self.cameraStill.image = nil;
+                    self.status = .Preview
+            })
+        }
     }
     
     // MARK: Camera Delegate
@@ -51,19 +95,20 @@ class FirstViewController: UIViewController, CameraDelegate {
     }
     
     func cameraSessionDidBegin() {
+        self.cameraStatus.text = ""
         UIView.animateWithDuration(0.225, animations: { () -> Void in
-//            self.cameraStatus.alpha = 0.0
-//            self.cameraPreview.alpha = 1.0
-//            self.cameraCapture.alpha = 1.0
-//            self.cameraCaptureShadow.alpha = 0.4;
+            self.cameraStatus.alpha = 0.0
+            self.cameraPreview.alpha = 1.0
+            self.cameraCapture.alpha = 1.0
+            self.cameraCaptureShadow.alpha = 0.4;
         })
     }
     
     func cameraSessionDidStop() {
-//        self.cameraStatus.text = "Camera Stopped"
+        self.cameraStatus.text = "Camera Stopped"
         UIView.animateWithDuration(0.225, animations: { () -> Void in
-//            self.cameraStatus.alpha = 1.0
-//            self.cameraPreview.alpha = 0.0
+            self.cameraStatus.alpha = 1.0
+            self.cameraPreview.alpha = 0.0
         })
     }
 
