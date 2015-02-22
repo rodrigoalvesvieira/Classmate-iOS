@@ -18,6 +18,8 @@ class SecondViewController: UIViewController, UITableViewDataSource {
         3: ["Info. Teórica", "Inter. Usuário-Máquina"],
         4: ["Int. Multimídia", "Compiladores"]
     ]
+    
+    var classTime = "13h - 15h"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +49,7 @@ class SecondViewController: UIViewController, UITableViewDataSource {
         println("celula eh \(indexPath.row) e id eh \(id)")
         
         cell.textLabel?.text = disciplines?[0]
+        cell.detailTextLabel?.text = classTime
         
         return cell
     }
