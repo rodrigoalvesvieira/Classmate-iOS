@@ -14,6 +14,7 @@
 		EB2A05DE1A99A469009BED88 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB2A05DD1A99A469009BED88 /* Images.xcassets */; };
 		EB2A05E11A99A469009BED88 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB2A05DF1A99A469009BED88 /* LaunchScreen.xib */; };
 		EB2A05ED1A99A469009BED88 /* ClassboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2A05EC1A99A469009BED88 /* ClassboardTests.swift */; };
+		EB2A05F71A99BBB1009BED88 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2A05F61A99BBB1009BED88 /* Camera.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		EB2A05E61A99A469009BED88 /* ClassboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClassboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2A05EB1A99A469009BED88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB2A05EC1A99A469009BED88 /* ClassboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassboardTests.swift; sourceTree = "<group>"; };
+		EB2A05F61A99BBB1009BED88 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			children = (
 				EB2A05D41A99A469009BED88 /* AppDelegate.swift */,
 				EB2A05D61A99A469009BED88 /* FirstViewController.swift */,
+				EB2A05F61A99BBB1009BED88 /* Camera.swift */,
 				EB2A05D81A99A469009BED88 /* SecondViewController.swift */,
 				EB2A05DA1A99A469009BED88 /* Main.storyboard */,
 				EB2A05DD1A99A469009BED88 /* Images.xcassets */,
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB2A05F71A99BBB1009BED88 /* Camera.swift in Sources */,
 				EB2A05D91A99A469009BED88 /* SecondViewController.swift in Sources */,
 				EB2A05D51A99A469009BED88 /* AppDelegate.swift in Sources */,
 				EB2A05D71A99A469009BED88 /* FirstViewController.swift in Sources */,
