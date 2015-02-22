@@ -9,7 +9,7 @@
 import UIKit
 
 class SecondViewController: UIViewController, UITableViewDataSource {
-    var classes = ["1 Período", "2 Período", "3 Período", "4 Período", "5 Período"]
+    var classes = ["Cálculo I", "Matemática Discreta", "Int. a Computação", "Lógica", "Algoritmos", "Estatística", "Infra de Comunicação", "Infra de Software", "Info. Teórica", "Inter. Usuário-Máquina", "Int. Multimídia", "Compiladores"]
     
     var coursesInfo = [
         0: ["Cálculo I", "Matemática Discreta", "Int. a Computação"],
@@ -36,7 +36,7 @@ class SecondViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return classes.count
+        return 3
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -44,24 +44,14 @@ class SecondViewController: UIViewController, UITableViewDataSource {
         var cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         
         var disciplines = coursesInfo[indexPath.section]
-        var id = calculateIndex(indexPath.section, index: indexPath.row)
         
-        println("celula eh \(indexPath.row) e id eh \(id)")
-        
-        cell.textLabel?.text = disciplines?[0]
+        cell.textLabel?.text = "Aula \(indexPath.section + 1)"
         cell.detailTextLabel?.text = classTime
         
+        var lectureImage = UIImage(named: "Lectures")
+        cell.imageView?.image = lectureImage
+        
         return cell
-    }
-    
-    func calculateIndex(section: Int, index: Int) -> Int {
-        var total = 0
-        
-        for i in 0..<(section + 1) {
-            total = (coursesInfo[i]?.count)!
-        }
-        
-        return total
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
