@@ -207,12 +207,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yxa-aJ-iwc">
-                                <rect key="frame" x="0.0" y="99" width="320" height="362"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yxa-aJ-iwc">
+                                <rect key="frame" x="0.0" y="99" width="320" height="341"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Yk-Tq-n6L" customClass="iCarousel">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Yk-Tq-n6L" customClass="iCarousel">
                                 <rect key="frame" x="-140" y="-16" width="600" height="600"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FK4-em-1of">
+                                        <rect key="frame" x="220" y="477" width="161" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="161" id="znI-7h-J9C"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Original"/>
+                                            <segment title="Contraste"/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="FK4-em-1of" secondAttribute="bottom" constant="95" id="sZd-m7-MdP"/>
+                                    <constraint firstItem="FK4-em-1of" firstAttribute="centerX" secondItem="8Yk-Tq-n6L" secondAttribute="centerX" id="z4C-dG-E3i"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="9sc-Gb-28m" id="x1u-YE-hRO"/>
                                     <outlet property="delegate" destination="9sc-Gb-28m" id="Qi9-HD-Mvg"/>
@@ -220,6 +236,16 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yxa-aJ-iwc" firstAttribute="leading" secondItem="dWJ-dK-qno" secondAttribute="leading" id="1pC-d7-8Zt"/>
+                            <constraint firstItem="0Zx-dq-2eT" firstAttribute="top" secondItem="yxa-aJ-iwc" secondAttribute="bottom" constant="79" id="49r-YB-DiS"/>
+                            <constraint firstItem="8Yk-Tq-n6L" firstAttribute="centerX" secondItem="yxa-aJ-iwc" secondAttribute="centerX" id="HFF-zX-u6I"/>
+                            <constraint firstItem="yxa-aJ-iwc" firstAttribute="top" secondItem="eTM-hX-i0T" secondAttribute="bottom" constant="35" id="R1a-oZ-n71"/>
+                            <constraint firstItem="8Yk-Tq-n6L" firstAttribute="top" secondItem="dWJ-dK-qno" secondAttribute="topMargin" constant="-16" id="W7h-Gc-BGQ"/>
+                            <constraint firstItem="8Yk-Tq-n6L" firstAttribute="centerY" secondItem="dWJ-dK-qno" secondAttribute="centerY" id="g1i-gJ-afl"/>
+                            <constraint firstItem="8Yk-Tq-n6L" firstAttribute="leading" secondItem="dWJ-dK-qno" secondAttribute="leading" constant="-140" id="qR6-3W-5HF"/>
+                            <constraint firstItem="8Yk-Tq-n6L" firstAttribute="centerX" secondItem="dWJ-dK-qno" secondAttribute="centerX" id="yqz-fP-q5C"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
