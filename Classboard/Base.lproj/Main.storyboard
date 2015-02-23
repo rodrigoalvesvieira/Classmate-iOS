@@ -141,12 +141,54 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Disciplinas" id="HRW-Ew-DeZ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="gMe-vZ-Rha"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="gMe-vZ-Rha">
+                            <connections>
+                                <segue destination="n1t-YH-ByF" kind="show" id="sDb-cN-q6W"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1562" y="360"/>
+        </scene>
+        <!--Nova-->
+        <scene sceneID="1ZF-VQ-M1q">
+            <objects>
+                <viewController title="Nova" id="n1t-YH-ByF" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4oQ-5b-vxS"/>
+                        <viewControllerLayoutGuide type="bottom" id="W0G-1I-iVm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ECW-AS-Bfa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sIC-sK-igc">
+                                <rect key="frame" x="287" y="109" width="26" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ccp-Gu-2dw">
+                                <rect key="frame" x="140" y="219" width="320" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="446365450.26075703">
+                                    <!--2015-02-23 06:24:10 +0000-->
+                                </date>
+                                <locale key="locale" localeIdentifier="pt"/>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="Ccp-Gu-2dw" secondAttribute="centerY" id="07r-r4-4o6"/>
+                            <constraint firstItem="sIC-sK-igc" firstAttribute="top" secondItem="4oQ-5b-vxS" secondAttribute="bottom" constant="45" id="Lyh-GQ-aog"/>
+                            <constraint firstItem="sIC-sK-igc" firstAttribute="centerX" secondItem="Ccp-Gu-2dw" secondAttribute="centerX" id="McH-FR-oTT"/>
+                            <constraint firstAttribute="centerX" secondItem="Ccp-Gu-2dw" secondAttribute="centerX" id="oIW-gT-GiP"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AxR-jN-il8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2352" y="393"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
