@@ -105,7 +105,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="7u5-EG-kKd">
@@ -150,10 +150,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1562" y="360"/>
+            <point key="canvasLocation" x="1275" y="344"/>
         </scene>
         <!--Nova-->
         <scene sceneID="1ZF-VQ-M1q">
@@ -164,16 +165,16 @@
                         <viewControllerLayoutGuide type="bottom" id="W0G-1I-iVm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ECW-AS-Bfa">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sIC-sK-igc">
-                                <rect key="frame" x="287" y="109" width="26" height="30"/>
+                                <rect key="frame" x="147" y="109" width="26" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ccp-Gu-2dw">
-                                <rect key="frame" x="140" y="219" width="320" height="162"/>
+                                <rect key="frame" x="0.0" y="203" width="320" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="446365450.26075703">
                                     <!--2015-02-23 06:24:10 +0000-->
                                 </date>
@@ -188,10 +189,11 @@
                             <constraint firstAttribute="centerX" secondItem="Ccp-Gu-2dw" secondAttribute="centerX" id="oIW-gT-GiP"/>
                         </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AxR-jN-il8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2352" y="393"/>
+            <point key="canvasLocation" x="1643" y="344"/>
         </scene>
         <!--Int. Usuário Máquina-->
         <scene sceneID="aV8-Rp-FDp">
@@ -202,14 +204,20 @@
                         <viewControllerLayoutGuide type="bottom" id="0Zx-dq-2eT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dWJ-dK-qno">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yxa-aJ-iwc">
+                                <rect key="frame" x="0.0" y="99" width="320" height="362"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BGn-YH-vVm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3086" y="393"/>
+            <point key="canvasLocation" x="2003" y="344"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
