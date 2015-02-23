@@ -413,6 +413,7 @@
 				EB2A05F21A99A469009BED88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EB2A05F31A99A469009BED88 /* Build configuration list for PBXNativeTarget "ClassboardTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +422,7 @@
 				EB2A05F51A99A469009BED88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
