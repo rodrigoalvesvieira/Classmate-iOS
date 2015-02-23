@@ -9,6 +9,8 @@
 import UIKit
 
 class SecondViewController: UIViewController, UITableViewDataSource {
+    var disciplines: [Discipline] = []
+    
     var classes = ["Cálculo I", "Matemática Discreta", "Int. a Computação", "Lógica", "Algoritmos", "Estatística", "Infra de Comunicação", "Infra de Software", "Info. Teórica", "Inter. Usuário-Máquina", "Int. Multimídia", "Compiladores"]
     
     var coursesInfo = [
