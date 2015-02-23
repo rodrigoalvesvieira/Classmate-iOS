@@ -131,6 +131,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="9sc-Gb-28m" kind="show" id="dea-w3-x8C"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -189,6 +192,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AxR-jN-il8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2352" y="393"/>
+        </scene>
+        <!--Int. Usuário Máquina-->
+        <scene sceneID="aV8-Rp-FDp">
+            <objects>
+                <viewController title="Int. Usuário Máquina" id="9sc-Gb-28m" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eTM-hX-i0T"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Zx-dq-2eT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dWJ-dK-qno">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BGn-YH-vVm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3086" y="393"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
