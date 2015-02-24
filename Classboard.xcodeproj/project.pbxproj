@@ -17,6 +17,7 @@
 		EB2A05E11A99A469009BED88 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB2A05DF1A99A469009BED88 /* LaunchScreen.xib */; };
 		EB2A05ED1A99A469009BED88 /* ClassboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2A05EC1A99A469009BED88 /* ClassboardTests.swift */; };
 		EB2A05F71A99BBB1009BED88 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2A05F61A99BBB1009BED88 /* Camera.swift */; };
+		EB569D871A9C1FB600DEC799 /* ClassboardDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB569D851A9C1FB600DEC799 /* ClassboardDataModel.xcdatamodeld */; };
 		EBDA037B1A9B24BA00D4975C /* Discipline.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDA037A1A9B24BA00D4975C /* Discipline.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		EB2A05EB1A99A469009BED88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB2A05EC1A99A469009BED88 /* ClassboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassboardTests.swift; sourceTree = "<group>"; };
 		EB2A05F61A99BBB1009BED88 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		EB569D861A9C1FB600DEC799 /* ClassboardDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ClassboardDataModel.xcdatamodel; sourceTree = "<group>"; };
 		EBDA037A1A9B24BA00D4975C /* Discipline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Discipline.swift; path = Models/Discipline.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +92,7 @@
 		EB2A05C61A99A468009BED88 = {
 			isa = PBXGroup;
 			children = (
+				EB569D851A9C1FB600DEC799 /* ClassboardDataModel.xcdatamodeld */,
 				EB2A05D11A99A469009BED88 /* Classboard */,
 				EB2A05E91A99A469009BED88 /* ClassboardTests */,
 				EB2A05D01A99A469009BED88 /* Products */,
@@ -295,6 +298,7 @@
 			files = (
 				EBDA037B1A9B24BA00D4975C /* Discipline.swift in Sources */,
 				EB22B6B11A9B2EA50035E7CC /* DisciplineDetailViewController.swift in Sources */,
+				EB569D871A9C1FB600DEC799 /* ClassboardDataModel.xcdatamodeld in Sources */,
 				EB2A05F71A99BBB1009BED88 /* Camera.swift in Sources */,
 				EB2A05D91A99A469009BED88 /* SecondViewController.swift in Sources */,
 				EB2A05D51A99A469009BED88 /* AppDelegate.swift in Sources */,
@@ -506,6 +510,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EB569D851A9C1FB600DEC799 /* ClassboardDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EB569D861A9C1FB600DEC799 /* ClassboardDataModel.xcdatamodel */,
+			);
+			currentVersion = EB569D861A9C1FB600DEC799 /* ClassboardDataModel.xcdatamodel */;
+			path = ClassboardDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EB2A05C71A99A468009BED88 /* Project object */;
 }
