@@ -35,18 +35,17 @@ class DisciplineDetailViewController: UIViewController, iCarouselDataSource, iCa
         
         //create new view if no view is available for recycling
         if (view == nil) {
-            
             view = UIImageView(frame:CGRectMake(0, 0, 200, 200))
             
-            var lecturePicture = UIImage(named: "photo")
-            
+            let lecturePicture = UIImage(named: "photo")
             let controlsFilter = CIFilter(name: "CIColorControls")
             
             controlsFilter.setValue(CIImage(image: lecturePicture), forKey: kCIInputImageKey)
             
-            controlsFilter.setValue(1.2, forKey: kCIInputContrastKey)
+            controlsFilter.setValue(1.9, forKey: kCIInputContrastKey)
             
-            let displayImage = UIImage(CGImage: CIContext(options:nil).createCGImage(controlsFilter.outputImage, fromRect:controlsFilter.outputImage.extent()))!
+            let displayImage = UIImage(CGImage: CIContext(options:nil)
+                .createCGImage(controlsFilter.outputImage, fromRect:controlsFilter.outputImage.extent()))!
             
             (view as UIImageView!).image = displayImage
             view.contentMode = .Center
@@ -56,9 +55,11 @@ class DisciplineDetailViewController: UIViewController, iCarouselDataSource, iCa
     }
     
     func carousel(carousel: iCarousel!, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
+        
         if (option == .Spacing) {
             return value * 1.1
         }
+
         return value
     }
     
