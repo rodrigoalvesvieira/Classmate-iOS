@@ -159,7 +159,7 @@
         <!--Nova-->
         <scene sceneID="1ZF-VQ-M1q">
             <objects>
-                <viewController title="Nova" id="n1t-YH-ByF" sceneMemberID="viewController">
+                <viewController title="Nova" id="n1t-YH-ByF" customClass="AddDisciplineViewController" customModule="Classboard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4oQ-5b-vxS"/>
                         <viewControllerLayoutGuide type="bottom" id="W0G-1I-iVm"/>
