@@ -35,30 +35,22 @@ class DisciplineDetailViewController: UIViewController, iCarouselDataSource, iCa
         
         //create new view if no view is available for recycling
         if (view == nil) {
-            //don't do anything specific to the index within
-            //this `if (view == nil) {...}` statement because the view will be
-            //recycled and used with other index values later
-            view = UIImageView(frame:CGRectMake(0, 0, 200, 200))
-            (view as UIImageView!).image = UIImage(named: "placeholder")
-            view.contentMode = .Center
             
-            label = UILabel(frame:view.bounds)
-            label.backgroundColor = UIColor.clearColor()
-            label.textAlignment = .Center
-            label.font = label.font.fontWithSize(50)
-            label.tag = 1
-            view.addSubview(label)
-        } else {
-            //get a reference to the label in the recycled view
-            label = view.viewWithTag(1) as UILabel!
+            view = UIImageView(frame:CGRectMake(0, 0, 200, 200))
+            
+            var lecturePicture = UIImage(named: "photo")
+            
+            let controlsFilter = CIFilter(name: "CIColorControls")
+            
+            controlsFilter.setValue(CIImage(image: lecturePicture), forKey: kCIInputImageKey)
+            
+            controlsFilter.setValue(1.2, forKey: kCIInputContrastKey)
+            
+            let displayImage = UIImage(CGImage: CIContext(options:nil).createCGImage(controlsFilter.outputImage, fromRect:controlsFilter.outputImage.extent()))!
+            
+            (view as UIImageView!).image = displayImage
+            view.contentMode = .Center
         }
-        
-        //set item label
-        //remember to always set any properties of your carousel item
-        //views outside of the `if (view == nil) {...}` check otherwise
-        //you'll get weird issues with carousel item content appearing
-        //in the wrong place in the carousel
-        label.text = "\(items[index])"
         
         return view
     }
