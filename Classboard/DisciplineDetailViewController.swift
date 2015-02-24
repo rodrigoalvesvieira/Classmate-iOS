@@ -7,11 +7,46 @@
 //
 
 import UIKit
+import AssetsLibrary
 
 class DisciplineDetailViewController: UIViewController, iCarouselDataSource, iCarouselDelegate
 {
     var items: [Int] = []
+    var currentPreviewImage: CIImage!
+    
     @IBOutlet var carousel : iCarousel!
+    
+    @IBOutlet weak var savePhotoButton: UIBarButtonItem!
+    
+    @IBAction func savePhoto(sender: AnyObject) {
+        let optionMenu = UIAlertController(title: nil, message: "Escolher opção", preferredStyle: .ActionSheet)
+        
+        let deleteAction = UIAlertAction(title: "Salvar", style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            
+            let imageToSave = self.currentPreviewImage
+            
+            let softwareContext = CIContext(options:[kCIContextUseSoftwareRenderer: true])
+            let cgimg = softwareContext.createCGImage(imageToSave, fromRect:imageToSave.extent())
+
+            let library = ALAssetsLibrary()
+            library.writeImageToSavedPhotosAlbum(cgimg, metadata:imageToSave.properties(), completionBlock:nil)
+        })
+        
+        let saveAction = UIAlertAction(title: "Desfazer", style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .Cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        optionMenu.addAction(deleteAction)
+        optionMenu.addAction(saveAction)
+        optionMenu.addAction(cancelAction)
+        
+        self.presentViewController(optionMenu, animated: true, completion: nil)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,6 +83,9 @@ class DisciplineDetailViewController: UIViewController, iCarouselDataSource, iCa
                 .createCGImage(controlsFilter.outputImage, fromRect:controlsFilter.outputImage.extent()))!
             
             (view as UIImageView!).image = displayImage
+            
+            self.currentPreviewImage = controlsFilter.outputImage
+            
             view.contentMode = .Center
         }
         

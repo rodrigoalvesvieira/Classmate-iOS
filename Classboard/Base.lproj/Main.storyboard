@@ -247,9 +247,17 @@
                             <constraint firstItem="8Yk-Tq-n6L" firstAttribute="centerX" secondItem="dWJ-dK-qno" secondAttribute="centerX" id="yqz-fP-q5C"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Aula 1" id="XCt-rF-Fff">
+                        <barButtonItem key="rightBarButtonItem" title="Salvar" id="nKp-Xd-rJ5">
+                            <connections>
+                                <action selector="savePhoto:" destination="9sc-Gb-28m" id="D1x-Jr-Fib"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="carousel" destination="8Yk-Tq-n6L" id="i08-xn-Ldn"/>
+                        <outlet property="savePhotoButton" destination="nKp-Xd-rJ5" id="w0C-tB-pwA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BGn-YH-vVm" userLabel="First Responder" sceneMemberID="firstResponder"/>
