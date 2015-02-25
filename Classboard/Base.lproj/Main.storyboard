@@ -109,28 +109,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sIC-sK-igc">
-                                <rect key="frame" x="147" y="109" width="26" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nova disciplina..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sIC-sK-igc">
+                                <rect key="frame" x="16" y="109" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="disciplineTextField:" destination="n1t-YH-ByF" eventType="editingDidEnd" id="mD0-Ka-ehD"/>
+                                </connections>
                             </textField>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ccp-Gu-2dw">
+                            <datePicker contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ccp-Gu-2dw">
                                 <rect key="frame" x="0.0" y="203" width="320" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="446365450.26075703">
                                     <!--2015-02-23 06:24:10 +0000-->
                                 </date>
                                 <locale key="locale" localeIdentifier="pt"/>
                             </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dia de aula" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvT-TR-Efq">
+                                <rect key="frame" x="16" y="164" width="98" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="98" id="gaA-P2-ox7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="Ccp-Gu-2dw" secondAttribute="centerY" id="07r-r4-4o6"/>
-                            <constraint firstItem="sIC-sK-igc" firstAttribute="top" secondItem="4oQ-5b-vxS" secondAttribute="bottom" constant="45" id="Lyh-GQ-aog"/>
-                            <constraint firstItem="sIC-sK-igc" firstAttribute="centerX" secondItem="Ccp-Gu-2dw" secondAttribute="centerX" id="McH-FR-oTT"/>
-                            <constraint firstAttribute="centerX" secondItem="Ccp-Gu-2dw" secondAttribute="centerX" id="oIW-gT-GiP"/>
+                            <constraint firstItem="cvT-TR-Efq" firstAttribute="leading" secondItem="sIC-sK-igc" secondAttribute="leading" id="41b-Ad-IYa"/>
+                            <constraint firstItem="sIC-sK-igc" firstAttribute="top" secondItem="4oQ-5b-vxS" secondAttribute="bottom" constant="45" id="5o8-ZT-bX6"/>
+                            <constraint firstItem="sIC-sK-igc" firstAttribute="leading" secondItem="ECW-AS-Bfa" secondAttribute="leadingMargin" id="I2x-UA-xbS"/>
+                            <constraint firstItem="Ccp-Gu-2dw" firstAttribute="leading" secondItem="ECW-AS-Bfa" secondAttribute="leading" id="QM6-Dw-tdu"/>
+                            <constraint firstItem="cvT-TR-Efq" firstAttribute="top" secondItem="4oQ-5b-vxS" secondAttribute="bottom" constant="100" id="fNd-yv-9i2"/>
+                            <constraint firstItem="Ccp-Gu-2dw" firstAttribute="centerX" secondItem="sIC-sK-igc" secondAttribute="centerX" id="oqq-T3-J1H"/>
+                            <constraint firstItem="Ccp-Gu-2dw" firstAttribute="centerY" secondItem="ECW-AS-Bfa" secondAttribute="centerY" id="prY-Vz-tBp"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="newDisciplineTextField" destination="sIC-sK-igc" id="JtH-fs-FsM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AxR-jN-il8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -245,7 +263,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Disciplines" width="30" height="30"/>
+        <image name="Disciplines" width="42" height="42"/>
         <image name="circle" width="48" height="48"/>
         <image name="first" width="50" height="50"/>
     </resources>

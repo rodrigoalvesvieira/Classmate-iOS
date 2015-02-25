@@ -8,7 +8,9 @@
 
 import UIKit
 
-class AddDisciplineViewController: UIViewController {
+class AddDisciplineViewController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet weak var newDisciplineTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,5 +20,12 @@ class AddDisciplineViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        return true
+    }
+    
+    @IBAction func disciplineTextField(sender: AnyObject) {
     }
 }

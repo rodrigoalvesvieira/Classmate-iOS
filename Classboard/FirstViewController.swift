@@ -16,6 +16,7 @@ class FirstViewController: UIViewController {
     // If we find a device we'll store it here for later use
     var captureDevice : AVCaptureDevice?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
