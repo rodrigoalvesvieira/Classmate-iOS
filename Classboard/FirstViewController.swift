@@ -45,6 +45,10 @@ class FirstViewController: UIViewController {
         
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     func updateDeviceSettings(focusValue : Float, isoValue : Float) {
         if let device = captureDevice {
             if(device.lockForConfiguration(nil)) {
