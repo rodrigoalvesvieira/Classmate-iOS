@@ -16,7 +16,19 @@
                     <view key="view" contentMode="scaleToFill" id="AJl-gO-1dr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuC-Cc-MMv">
+                                <rect key="frame" x="136" y="260" width="48" height="48"/>
+                                <state key="normal" image="circle">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xuC-Cc-MMv" firstAttribute="centerY" secondItem="AJl-gO-1dr" secondAttribute="centerY" id="bXx-Wt-quV"/>
+                            <constraint firstItem="xuC-Cc-MMv" firstAttribute="centerX" secondItem="AJl-gO-1dr" secondAttribute="centerX" id="lfd-lb-0LF"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Camera" image="first" id="acW-dT-cKf"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -233,6 +245,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="circle" width="48" height="48"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
