@@ -9,10 +9,6 @@
 import UIKit
 import AVFoundation
 
-enum Status: Int {
-    case Preview, Still, Error
-}
-
 class FirstViewController: UIViewController {
     let captureSession = AVCaptureSession()
     var previewLayer : AVCaptureVideoPreviewLayer?

@@ -228,7 +228,7 @@
         <scene sceneID="nxl-22-PtN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dEV-it-h0V" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Classes" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Classes" image="Disciplines" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1vs-yT-bzg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -245,8 +245,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Disciplines" width="30" height="30"/>
         <image name="circle" width="48" height="48"/>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="first" width="50" height="50"/>
     </resources>
 </document>
