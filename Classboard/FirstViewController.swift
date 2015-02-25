@@ -13,104 +13,110 @@ enum Status: Int {
     case Preview, Still, Error
 }
 
-class FirstViewController: UIViewController, CameraDelegate {
+class FirstViewController: UIViewController {
+    let captureSession = AVCaptureSession()
+    var previewLayer : AVCaptureVideoPreviewLayer?
     
-    @IBOutlet weak var cameraStill: UIImageView!
-    @IBOutlet weak var cameraPreview: UIView!
-    @IBOutlet weak var cameraStatus: UILabel!
-    @IBOutlet weak var cameraCapture: UIButton!
-    @IBOutlet weak var cameraCaptureShadow: UILabel!
-    
-    var preview: AVCaptureVideoPreviewLayer?
-    
-    var camera: Camera?
-    var status: Status = .Preview
+    // If we find a device we'll store it here for later use
+    var captureDevice : AVCaptureDevice?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.initializeCamera()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        self.establishVideoPreviewArea()
-    }
-    
-    func initializeCamera() {
-        self.cameraStatus.text = "Starting Camera"
-        self.camera = Camera(sender: self)
-    }
-    
-    func establishVideoPreviewArea() {
-        self.preview = AVCaptureVideoPreviewLayer(session: self.camera?.session)
-        self.preview?.videoGravity = AVLayerVideoGravityResizeAspectFill
-        self.preview?.frame = self.cameraPreview.bounds
-        self.preview?.cornerRadius = 8.0
-        self.cameraPreview.layer.addSublayer(self.preview)
-    }
-    
-    // MARK: Button Actions
-    
-    @IBAction func captureFrame(sender: AnyObject) {
-        if self.status == .Preview {
-            self.cameraStatus.text = "Capturing Photo"
-            UIView.animateWithDuration(0.225, animations: { () -> Void in
-                self.cameraPreview.alpha = 0.0;
-                self.cameraStatus.alpha = 1.0
-            })
-            
-            self.camera?.captureStillImage({ (image) -> Void in
-                if image != nil {
-                    self.cameraStill.image = image;
-                    
-                    UIView.animateWithDuration(0.225, animations: { () -> Void in
-                        self.cameraStill.alpha = 1.0;
-                        self.cameraStatus.alpha = 0.0;
-                    })
-                    self.status = .Still
-                } else {
-                    self.cameraStatus.text = "Uh oh! Something went wrong. Try it again."
-                    self.status = .Error
+        
+        // Do any additional setup after loading the view, typically from a nib.
+        captureSession.sessionPreset = AVCaptureSessionPresetHigh
+        
+        let devices = AVCaptureDevice.devices()
+        
+        // Loop through all the capture devices on this phone
+        for device in devices {
+            // Make sure this particular device supports video
+            if (device.hasMediaType(AVMediaTypeVideo)) {
+                // Finally check the position and confirm we've got the back camera
+                if(device.position == AVCaptureDevicePosition.Back) {
+                    captureDevice = device as? AVCaptureDevice
+                    if captureDevice != nil {
+                        println("Capture device found")
+                        beginSession()
+                    }
                 }
+            }
+        }
+        
+    }
+    
+    func updateDeviceSettings(focusValue : Float, isoValue : Float) {
+        if let device = captureDevice {
+            if(device.lockForConfiguration(nil)) {
+                device.setFocusModeLockedWithLensPosition(focusValue, completionHandler: { (time) -> Void in
+                    //
+                })
                 
-                self.cameraCapture.setTitle("Reset", forState: UIControlState.Normal)
-            })
-        } else if self.status == .Still || self.status == .Error {
-            UIView.animateWithDuration(0.225, animations: { () -> Void in
-                self.cameraStill.alpha = 0.0;
-                self.cameraStatus.alpha = 0.0;
-                self.cameraPreview.alpha = 1.0;
-                self.cameraCapture.setTitle("Capture", forState: UIControlState.Normal)
-                }, completion: { (done) -> Void in
-                    self.cameraStill.image = nil;
-                    self.status = .Preview
-            })
+                // Adjust the iso to clamp between minIso and maxIso based on the active format
+                let minISO = device.activeFormat.minISO
+                let maxISO = device.activeFormat.maxISO
+                let clampedISO = isoValue * (maxISO - minISO) + minISO
+                
+                device.setExposureModeCustomWithDuration(AVCaptureExposureDurationCurrent, ISO: clampedISO, completionHandler: { (time) -> Void in
+                    //
+                })
+                
+                device.unlockForConfiguration()
+            }
         }
     }
     
-    // MARK: Camera Delegate
-    
-    func cameraSessionConfigurationDidComplete() {
-        self.camera?.startCamera()
+    func touchPercent(touch : UITouch) -> CGPoint {
+        // Get the dimensions of the screen in points
+        let screenSize = UIScreen.mainScreen().bounds.size
+        
+        // Create an empty CGPoint object set to 0, 0
+        var touchPer = CGPointZero
+        
+        // Set the x and y values to be the value of the tapped position, divided by the width/height of the screen
+        touchPer.x = touch.locationInView(self.view).x / screenSize.width
+        touchPer.y = touch.locationInView(self.view).y / screenSize.height
+        
+        // Return the populated CGPoint
+        return touchPer
     }
     
-    func cameraSessionDidBegin() {
-        self.cameraStatus.text = ""
-        UIView.animateWithDuration(0.225, animations: { () -> Void in
-            self.cameraStatus.alpha = 0.0
-            self.cameraPreview.alpha = 1.0
-            self.cameraCapture.alpha = 1.0
-            self.cameraCaptureShadow.alpha = 0.4;
-        })
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        let touchPer = touchPercent( touches.anyObject() as UITouch )
+        //focusTo(Float(touchPer.x))
+        updateDeviceSettings(Float(touchPer.x), isoValue: Float(touchPer.y))
     }
     
-    func cameraSessionDidStop() {
-        self.cameraStatus.text = "Camera Stopped"
-        UIView.animateWithDuration(0.225, animations: { () -> Void in
-            self.cameraStatus.alpha = 1.0
-            self.cameraPreview.alpha = 0.0
-        })
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+        let touchPer = touchPercent( touches.anyObject() as UITouch )
+        //focusTo(Float(touchPer.x))
+        updateDeviceSettings(Float(touchPer.x), isoValue: Float(touchPer.y))
     }
-
+    
+    func configureDevice() {
+        if let device = captureDevice {
+            device.lockForConfiguration(nil)
+            device.focusMode = .Locked
+            device.unlockForConfiguration()
+        }
+        
+    }
+    
+    func beginSession() {
+        
+        configureDevice()
+        
+        var err : NSError? = nil
+        captureSession.addInput(AVCaptureDeviceInput(device: captureDevice, error: &err))
+        
+        if err != nil {
+            println("error: \(err?.localizedDescription)")
+        }
+        
+        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        self.view.layer.addSublayer(previewLayer)
+        previewLayer?.frame = self.view.layer.frame
+        captureSession.startRunning()
+    }
 }
 
