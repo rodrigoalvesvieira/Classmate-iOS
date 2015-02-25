@@ -10,7 +10,10 @@ import UIKit
 import AVFoundation
 
 class FirstViewController: UIViewController {
+    @IBOutlet weak var takePictureButton: UIButton!
+
     let captureSession = AVCaptureSession()
+    
     var previewLayer : AVCaptureVideoPreviewLayer?
     
     // If we find a device we'll store it here for later use
@@ -19,6 +22,8 @@ class FirstViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        takePictureButton.backgroundColor = UIColor.blackColor()
         
         // Do any additional setup after loading the view, typically from a nib.
         captureSession.sessionPreset = AVCaptureSessionPresetHigh
@@ -115,9 +120,20 @@ class FirstViewController: UIViewController {
         }
         
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        self.view.layer.addSublayer(previewLayer)
+//        self.view.layer.addSublayer(previewLayer)
+        
+        var newView = UIView()
+        newView.layer.addSublayer(previewLayer)
+        
+        self.view.insertSubview(newView, atIndex: 0)
+        
         previewLayer?.frame = self.view.layer.frame
         captureSession.startRunning()
     }
+    
+    @IBAction func takePicture(sender: AnyObject) {
+        NSLog("clicou")
+    }
+    
 }
 
