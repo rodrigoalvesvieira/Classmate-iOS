@@ -1,6 +1,6 @@
 # Classboard iOS [![App Store](https://dl.dropboxusercontent.com/u/7743293/appstore.png)](http://sgtpeppers.me)
 
-Aplicativo feito pelos alunos do [Centro de Informática da UFPE], Rodrigo Alves (_rav2_) e Guilherme Menge (_ghma_), para a disciplina de [Introdução a Multimídia IF687]
+Aplicativo feito por mim, Rodrigo Alves (_rav2_), para a disciplina de [Introdução a Multimídia IF687] do [Centro de Informática da UFPE].
 
 App Store description:
 
@@ -21,7 +21,7 @@ Open `Classboard.xcworkspace` and build!
 
 ## Copyright
 
-&copy; 2015 Rodrigo Alves e Guilherme Menge. Todos os Direitos Reservados.
+&copy; 2015 Rodrigo Alves. Todos os Direitos Reservados.
 
 [Cocoapods]: http://cocoapods.org
 [Centro de Informática da UFPE]: http://www2.cin.ufpe.br/site/index.php
