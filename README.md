@@ -4,11 +4,11 @@ An iOS app in Swift made by me, Rodrigo Alves, for the class of [Introduction to
 
 This app features stuff like the camera, basic image manipulation, table views, and CoreData.
 
-If you wanna know more, email me at rodrigovieira1994 [at] gmail
-
 App Store description:
 
 > An app to organize your school classes, so you don't have to!
+
+If you wanna know more, email me at rodrigovieira1994 [at] gmail
 
 ## Languages
 
