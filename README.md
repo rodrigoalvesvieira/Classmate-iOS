@@ -1,10 +1,14 @@
 # Classboard iOS [![App Store](https://dl.dropboxusercontent.com/u/7743293/appstore.png)](http://sgtpeppers.me)
 
-Aplicativo feito por mim, Rodrigo Alves (_rav2_), para a disciplina de [Introdução a Multimídia IF687] do [Centro de Informática da UFPE].
+An iOS app in Swift made by me, Rodrigo Alves, for the class of [Introduction to Multimedia - IF687] at the [Informatics Center at UFPE].
+
+This app features stuff like the camera, basic image manipulation, table views, and CoreData.
+
+If you wanna know more, email me at rodrigovieira1994 [at] gmail
 
 App Store description:
 
-> Um app para organizar e compartilhar suas aulas!
+> An app to organize your school classes, so you don't have to!
 
 ## Languages
 
@@ -21,8 +25,8 @@ Open `Classboard.xcworkspace` and build!
 
 ## Copyright
 
-&copy; 2015 Rodrigo Alves. Todos os Direitos Reservados.
+&copy; 2015 Rodrigo Alves. All Rights Reserved.
 
 [Cocoapods]: http://cocoapods.org
-[Centro de Informática da UFPE]: http://www2.cin.ufpe.br/site/index.php
-[Introdução a Multimídia IF687]: http://www.cin.ufpe.br/~dcunha/if687/index2.html
+[Informatics Center at UFPE]: http://www2.cin.ufpe.br/site/index.php
+[Introduction to Multimedia - IF687]: http://www.cin.ufpe.br/~dcunha/if687/index2.html
