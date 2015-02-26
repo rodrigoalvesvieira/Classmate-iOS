@@ -19,11 +19,8 @@ class FirstViewController: UIViewController {
     // If we find a device we'll store it here for later use
     var captureDevice : AVCaptureDevice?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        takePictureButton.backgroundColor = UIColor.blackColor()
         
         // Do any additional setup after loading the view, typically from a nib.
         captureSession.sessionPreset = AVCaptureSessionPresetHigh
@@ -87,29 +84,15 @@ class FirstViewController: UIViewController {
         return touchPer
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        let touchPer = touchPercent( touches.anyObject() as UITouch )
-        //focusTo(Float(touchPer.x))
-        updateDeviceSettings(Float(touchPer.x), isoValue: Float(touchPer.y))
-    }
-    
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        let touchPer = touchPercent( touches.anyObject() as UITouch )
-        //focusTo(Float(touchPer.x))
-        updateDeviceSettings(Float(touchPer.x), isoValue: Float(touchPer.y))
-    }
-    
     func configureDevice() {
         if let device = captureDevice {
             device.lockForConfiguration(nil)
             device.focusMode = .Locked
             device.unlockForConfiguration()
         }
-        
     }
     
     func beginSession() {
-        
         configureDevice()
         
         var err : NSError? = nil
@@ -120,7 +103,6 @@ class FirstViewController: UIViewController {
         }
         
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-//        self.view.layer.addSublayer(previewLayer)
         
         var newView = UIView()
         newView.layer.addSublayer(previewLayer)
