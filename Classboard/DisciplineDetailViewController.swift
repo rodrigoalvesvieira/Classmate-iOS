@@ -70,7 +70,6 @@ class DisciplineDetailViewController: UIViewController {
         self.classPicture.userInteractionEnabled = true
         self.classPicture.addGestureRecognizer(singleTap)
         
-        
         let lecturePicture = UIImage(named: "photo")
         let controlsFilter = CIFilter(name: "CIColorControls")
   
@@ -123,10 +122,6 @@ class DisciplineDetailViewController: UIViewController {
     }
     
     func tappedImage() {
-        // Oh oh, self.classPicture was clicked!
-    }
-    
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         self.navigationController?.navigationBar.hidden = !self.hideTopBar
         self.hideTopBar = !self.hideTopBar
         self.setNeedsStatusBarAppearanceUpdate()
