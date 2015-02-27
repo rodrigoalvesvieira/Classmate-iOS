@@ -9,14 +9,19 @@
 import UIKit
 import AssetsLibrary
 
-class DisciplineDetailViewController: UIViewController, iCarouselDataSource, iCarouselDelegate
-{
+class DisciplineDetailViewController: UIViewController {
     var items: [Int] = []
+    
+    var currentImage: UIImage!
     var currentPreviewImage: CIImage!
     
-    @IBOutlet var carousel : iCarousel!
-    
     @IBOutlet weak var savePhotoButton: UIBarButtonItem!
+    
+    @IBOutlet weak var classPicture: UIImageView!
+    
+    @IBOutlet weak var contrastSlider: UISlider!
+    
+    @IBOutlet weak var brightnessSlider: UISlider!
     
     @IBAction func savePhoto(sender: AnyObject) {
         let optionMenu = UIAlertController(title: nil, message: "Escolher opção", preferredStyle: .ActionSheet)
@@ -48,57 +53,64 @@ class DisciplineDetailViewController: UIViewController, iCarouselDataSource, iCa
         self.presentViewController(optionMenu, animated: true, completion: nil)
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        for i in 0...12 {
-            items.append(i)
-        }
+    // Prepares the sliders values
+    func initializeSliders() {
+        self.contrastSlider.minimumValue = 0.4
+        self.contrastSlider.maximumValue = 2.2
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        carousel.type = .CoverFlow2
+        
+        let lecturePicture = UIImage(named: "photo")
+        let controlsFilter = CIFilter(name: "CIColorControls")
+  
+        self.currentImage = lecturePicture
+        
+        initializeSliders()
+        
+        controlsFilter.setValue(CIImage(image: lecturePicture), forKey: kCIInputImageKey)
+        
+        controlsFilter.setValue(1.9, forKey: kCIInputContrastKey)
+        
+        let displayImage = UIImage(CGImage: CIContext(options:nil)
+            .createCGImage(controlsFilter.outputImage, fromRect:controlsFilter.outputImage.extent()))!
+        
+        self.classPicture.image = displayImage
+        
+        self.tabBarController?.tabBar.hidden = true
     }
     
-    func numberOfItemsInCarousel(carousel: iCarousel!) -> Int {
-        return items.count
+    @IBAction func changeContrast(sender: AnyObject) {
+        let value = self.contrastSlider.value
+        
+        let lecturePicture = self.currentImage
+        let controlsFilter = CIFilter(name: "CIColorControls")
+        
+        controlsFilter.setValue(CIImage(image: lecturePicture), forKey: kCIInputImageKey)
+        
+        controlsFilter.setValue(value, forKey: kCIInputContrastKey)
+        
+        let displayImage = UIImage(CGImage: CIContext(options:nil)
+            .createCGImage(controlsFilter.outputImage, fromRect:controlsFilter.outputImage.extent()))!
+        
+        self.classPicture.image = displayImage
+        self.currentPreviewImage = controlsFilter.outputImage
     }
     
-    func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView! {
-        var label: UILabel! = nil
+    @IBAction func changeBrightness(sender: AnyObject) {
+        let value = self.contrastSlider.value
         
-        //create new view if no view is available for recycling
-        if (view == nil) {
-            view = UIImageView(frame:CGRectMake(0, 0, 200, 200))
-            
-            let lecturePicture = UIImage(named: "photo")
-            let controlsFilter = CIFilter(name: "CIColorControls")
-            
-            controlsFilter.setValue(CIImage(image: lecturePicture), forKey: kCIInputImageKey)
-            
-            controlsFilter.setValue(1.9, forKey: kCIInputContrastKey)
-            
-            let displayImage = UIImage(CGImage: CIContext(options:nil)
-                .createCGImage(controlsFilter.outputImage, fromRect:controlsFilter.outputImage.extent()))!
-            
-            (view as UIImageView!).image = displayImage
-            
-            self.currentPreviewImage = controlsFilter.outputImage
-            
-            view.contentMode = .Center
-        }
+        let lecturePicture = self.currentImage
+        let controlsFilter = CIFilter(name: "CIColorControls")
         
-        return view
-    }
-    
-    func carousel(carousel: iCarousel!, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
+        controlsFilter.setValue(CIImage(image: lecturePicture), forKey: kCIInputImageKey)
+        controlsFilter.setValue(value, forKey: kCIInputBrightnessKey)
         
-        if (option == .Spacing) {
-            return value * 1.1
-        }
-
-        return value
+        let displayImage = UIImage(CGImage: CIContext(options:nil)
+            .createCGImage(controlsFilter.outputImage, fromRect:controlsFilter.outputImage.extent()))!
+        
+        self.classPicture.image = displayImage
     }
     
 }

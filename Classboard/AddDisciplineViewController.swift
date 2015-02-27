@@ -11,9 +11,7 @@ import UIKit
 class AddDisciplineViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var newDisciplineTextField: UITextField!
-    
     @IBOutlet weak var newDisciplineTime: UIDatePicker!
-    
     @IBOutlet weak var saveDisciplineButton: UIBarButtonItem!
     
     override func viewDidLoad() {

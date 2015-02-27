@@ -177,45 +177,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yxa-aJ-iwc">
-                                <rect key="frame" x="0.0" y="99" width="320" height="341"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yxa-aJ-iwc">
+                                <rect key="frame" x="0.0" y="64" width="320" height="341"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Yk-Tq-n6L" customClass="iCarousel">
-                                <rect key="frame" x="-140" y="-16" width="600" height="600"/>
-                                <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FK4-em-1of">
-                                        <rect key="frame" x="220" y="477" width="161" height="29"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="161" id="znI-7h-J9C"/>
-                                        </constraints>
-                                        <segments>
-                                            <segment title="Original"/>
-                                            <segment title="Contraste"/>
-                                        </segments>
-                                    </segmentedControl>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="FK4-em-1of" secondAttribute="bottom" constant="95" id="sZd-m7-MdP"/>
-                                    <constraint firstItem="FK4-em-1of" firstAttribute="centerX" secondItem="8Yk-Tq-n6L" secondAttribute="centerX" id="z4C-dG-E3i"/>
-                                </constraints>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="xq6-zP-Mlt">
+                                <rect key="frame" x="117" y="425" width="118" height="31"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="9sc-Gb-28m" id="x1u-YE-hRO"/>
-                                    <outlet property="delegate" destination="9sc-Gb-28m" id="Qi9-HD-Mvg"/>
+                                    <action selector="changeContrast:" destination="9sc-Gb-28m" eventType="valueChanged" id="CVl-K2-Ewr"/>
                                 </connections>
-                            </view>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="5Bo-xq-Rlu">
+                                <rect key="frame" x="117" y="469" width="118" height="31"/>
+                                <connections>
+                                    <action selector="changeBrightness:" destination="9sc-Gb-28m" eventType="valueChanged" id="JOO-ZH-mks"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contraste" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oq4-Nx-yl4">
+                                <rect key="frame" x="16" y="429" width="76" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brilho" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYT-k3-May">
+                                <rect key="frame" x="16" y="473" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="yxa-aJ-iwc" firstAttribute="leading" secondItem="dWJ-dK-qno" secondAttribute="leading" id="1pC-d7-8Zt"/>
-                            <constraint firstItem="0Zx-dq-2eT" firstAttribute="top" secondItem="yxa-aJ-iwc" secondAttribute="bottom" constant="79" id="49r-YB-DiS"/>
-                            <constraint firstItem="8Yk-Tq-n6L" firstAttribute="centerX" secondItem="yxa-aJ-iwc" secondAttribute="centerX" id="HFF-zX-u6I"/>
-                            <constraint firstItem="yxa-aJ-iwc" firstAttribute="top" secondItem="eTM-hX-i0T" secondAttribute="bottom" constant="35" id="R1a-oZ-n71"/>
-                            <constraint firstItem="8Yk-Tq-n6L" firstAttribute="top" secondItem="dWJ-dK-qno" secondAttribute="topMargin" constant="-16" id="W7h-Gc-BGQ"/>
-                            <constraint firstItem="8Yk-Tq-n6L" firstAttribute="centerY" secondItem="dWJ-dK-qno" secondAttribute="centerY" id="g1i-gJ-afl"/>
-                            <constraint firstItem="8Yk-Tq-n6L" firstAttribute="leading" secondItem="dWJ-dK-qno" secondAttribute="leading" constant="-140" id="qR6-3W-5HF"/>
-                            <constraint firstItem="8Yk-Tq-n6L" firstAttribute="centerX" secondItem="dWJ-dK-qno" secondAttribute="centerX" id="yqz-fP-q5C"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Aula 1" id="XCt-rF-Fff">
                         <barButtonItem key="rightBarButtonItem" title="Salvar" id="nKp-Xd-rJ5">
@@ -226,7 +216,9 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="carousel" destination="8Yk-Tq-n6L" id="i08-xn-Ldn"/>
+                        <outlet property="brightnessSlider" destination="5Bo-xq-Rlu" id="bBh-NO-H4a"/>
+                        <outlet property="classPicture" destination="yxa-aJ-iwc" id="nlR-lj-Fhz"/>
+                        <outlet property="contrastSlider" destination="xq6-zP-Mlt" id="3xL-AS-cNj"/>
                         <outlet property="savePhotoButton" destination="nKp-Xd-rJ5" id="w0C-tB-pwA"/>
                     </connections>
                 </viewController>

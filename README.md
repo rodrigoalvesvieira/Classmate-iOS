@@ -2,7 +2,7 @@
 
 An iOS app in Swift made by me, Rodrigo Alves, for the class of [Introduction to Multimedia - IF687] at the [Informatics Center at UFPE].
 
-This app features stuff like the camera, basic image manipulation, table views, and CoreData.
+This app features stuff like the camera, basic image manipulation (with `CIFilter`), table views, and CoreData.
 
 App Store description:
 
