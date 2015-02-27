@@ -12,6 +12,8 @@ import AssetsLibrary
 class DisciplineDetailViewController: UIViewController {
     var items: [Int] = []
     
+    var hideTopBar = false
+    
     var currentImage: UIImage!
     var currentPreviewImage: CIImage!
     
@@ -61,6 +63,13 @@ class DisciplineDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var singleTap = UITapGestureRecognizer(target: self, action: "tappedImage")
+        
+        singleTap.numberOfTapsRequired = 1
+        self.classPicture.userInteractionEnabled = true
+        self.classPicture.addGestureRecognizer(singleTap)
+        
         
         let lecturePicture = UIImage(named: "photo")
         let controlsFilter = CIFilter(name: "CIColorControls")
@@ -113,6 +122,19 @@ class DisciplineDetailViewController: UIViewController {
         self.classPicture.image = displayImage
     }
     
+    func tappedImage() {
+        // Oh oh, self.classPicture was clicked!
+    }
+    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        self.navigationController?.navigationBar.hidden = !self.hideTopBar
+        self.hideTopBar = !self.hideTopBar
+        self.setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return self.hideTopBar
+    }
 }
 
 
