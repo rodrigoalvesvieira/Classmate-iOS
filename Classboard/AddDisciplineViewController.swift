@@ -12,8 +12,13 @@ class AddDisciplineViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var newDisciplineTextField: UITextField!
     
+    @IBOutlet weak var newDisciplineTime: UIDatePicker!
+    
+    @IBOutlet weak var saveDisciplineButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -28,4 +33,12 @@ class AddDisciplineViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func disciplineTextField(sender: AnyObject) {
     }
+    
+    @IBAction func saveDiscipline(sender: AnyObject) {
+        self.view.endEditing(true)
+        
+        var title = newDisciplineTextField.text
+        var time = newDisciplineTime.date
+    }
+    
 }

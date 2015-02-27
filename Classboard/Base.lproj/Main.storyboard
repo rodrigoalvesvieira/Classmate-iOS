@@ -147,9 +147,18 @@
                             <constraint firstItem="Ccp-Gu-2dw" firstAttribute="centerY" secondItem="ECW-AS-Bfa" secondAttribute="centerY" id="prY-Vz-tBp"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Nova disciplina" id="bWK-Ql-UDr">
+                        <barButtonItem key="rightBarButtonItem" title="Salvar" id="0fG-Ci-w8g">
+                            <connections>
+                                <action selector="saveDiscipline:" destination="n1t-YH-ByF" id="HI1-Ck-o3R"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="newDisciplineTextField" destination="sIC-sK-igc" id="JtH-fs-FsM"/>
+                        <outlet property="newDisciplineTime" destination="Ccp-Gu-2dw" id="c0a-Zc-17t"/>
+                        <outlet property="saveDisciplineButton" destination="0fG-Ci-w8g" id="By4-b2-68I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AxR-jN-il8" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -14,6 +14,7 @@ class FirstViewController: UIViewController {
 
     let captureSession = AVCaptureSession()
     
+    var stillImageOutput: AVCaptureStillImageOutput?
     var previewLayer : AVCaptureVideoPreviewLayer?
     
     // If we find a device we'll store it here for later use
@@ -32,7 +33,7 @@ class FirstViewController: UIViewController {
             // Make sure this particular device supports video
             if (device.hasMediaType(AVMediaTypeVideo)) {
                 // Finally check the position and confirm we've got the back camera
-                if(device.position == AVCaptureDevicePosition.Back) {
+                if (device.position == AVCaptureDevicePosition.Back) {
                     captureDevice = device as? AVCaptureDevice
                     if captureDevice != nil {
                         println("Capture device found")
@@ -44,13 +45,15 @@ class FirstViewController: UIViewController {
         
     }
     
+    @IBOutlet var previewImage: UIView!
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
     
     func updateDeviceSettings(focusValue : Float, isoValue : Float) {
         if let device = captureDevice {
-            if(device.lockForConfiguration(nil)) {
+            if (device.lockForConfiguration(nil)) {
                 device.setFocusModeLockedWithLensPosition(focusValue, completionHandler: { (time) -> Void in
                     //
                 })
@@ -115,6 +118,18 @@ class FirstViewController: UIViewController {
     
     @IBAction func takePicture(sender: AnyObject) {
         NSLog("clicou")
+        
+        var imageView = UIImageView()
+        
+//        previewImage
+        
+        stillImageOutput = AVCaptureStillImageOutput()
+        
+        
+        
+        
+//        imageView.image = stillImageOutput as UIImage
+
     }
     
 }
