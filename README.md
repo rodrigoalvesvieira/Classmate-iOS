@@ -23,6 +23,10 @@ To install the [Cocoapods] dependencies, run:
 
 Open `Classboard.xcworkspace` and build!
 
+## Art & Logo
+
+I'm responsible for this project's source code. The people behind the basic design and logo are two designers from Brazil, [Amanda Mendes] and [Phillipe Burgos].
+
 ## Copyright
 
 &copy; 2015 Rodrigo Alves. All Rights Reserved.
@@ -30,3 +34,5 @@ Open `Classboard.xcworkspace` and build!
 [Cocoapods]: http://cocoapods.org
 [Informatics Center at UFPE]: http://www2.cin.ufpe.br/site/index.php
 [Introduction to Multimedia - IF687]: http://www.cin.ufpe.br/~dcunha/if687/index2.html
+[Amanda Mendes]: https://www.facebook.com/amda.mendes
+[Phillipe Burgos]: https://www.facebook.com/phillipe.burgos
