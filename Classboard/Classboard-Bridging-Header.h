@@ -9,6 +9,4 @@
 #ifndef Classboard_Classboard_Bridging_Header_h
 #define Classboard_Classboard_Bridging_Header_h
 
-#import "iCarousel.h"
-
 #endif

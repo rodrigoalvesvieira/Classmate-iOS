@@ -10,13 +10,14 @@ import UIKit
 import AssetsLibrary
 
 class DisciplineDetailViewController: UIViewController {
-    var items: [Int] = []
+    // Constants
     
+    // Variables
     var hideTopBar = false
-    
     var currentImage: UIImage!
     var currentPreviewImage: CIImage!
     
+    // Outlets
     @IBOutlet weak var savePhotoButton: UIBarButtonItem!
     
     @IBOutlet weak var classPicture: UIImageView!
@@ -25,42 +26,7 @@ class DisciplineDetailViewController: UIViewController {
     
     @IBOutlet weak var brightnessSlider: UISlider!
     
-    @IBAction func savePhoto(sender: AnyObject) {
-        let optionMenu = UIAlertController(title: nil, message: "Escolher opção", preferredStyle: .ActionSheet)
-        
-        let deleteAction = UIAlertAction(title: "Salvar", style: .Default, handler: {
-            (alert: UIAlertAction!) -> Void in
-            
-            let imageToSave = self.currentPreviewImage
-            
-            let softwareContext = CIContext(options:[kCIContextUseSoftwareRenderer: true])
-            let cgimg = softwareContext.createCGImage(imageToSave, fromRect:imageToSave.extent())
-
-            let library = ALAssetsLibrary()
-            library.writeImageToSavedPhotosAlbum(cgimg, metadata:imageToSave.properties(), completionBlock:nil)
-        })
-        
-        let saveAction = UIAlertAction(title: "Desfazer", style: .Default, handler: {
-            (alert: UIAlertAction!) -> Void in
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .Cancel, handler: {
-            (alert: UIAlertAction!) -> Void in
-        })
-        
-        optionMenu.addAction(deleteAction)
-        optionMenu.addAction(saveAction)
-        optionMenu.addAction(cancelAction)
-        
-        self.presentViewController(optionMenu, animated: true, completion: nil)
-    }
-    
-    // Prepares the sliders values
-    func initializeSliders() {
-        self.contrastSlider.minimumValue = 0.4
-        self.contrastSlider.maximumValue = 2.2
-    }
-    
+    // Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -87,6 +53,55 @@ class DisciplineDetailViewController: UIViewController {
         self.classPicture.image = displayImage
         
         self.tabBarController?.tabBar.hidden = true
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return self.hideTopBar
+    }
+    
+    // Custom methods
+    
+    // Prepares the sliders values
+    func initializeSliders() {
+        self.contrastSlider.minimumValue = 0.4
+        self.contrastSlider.maximumValue = 2.2
+    }
+    
+    func tappedImage() {
+        self.navigationController?.navigationBar.hidden = !self.hideTopBar
+        self.hideTopBar = !self.hideTopBar
+        self.setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    // Action methods
+    @IBAction func savePhoto(sender: AnyObject) {
+        let optionMenu = UIAlertController(title: nil, message: "Escolher opção", preferredStyle: .ActionSheet)
+        
+        let deleteAction = UIAlertAction(title: "Salvar", style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            
+            let imageToSave = self.currentPreviewImage
+            
+            let softwareContext = CIContext(options:[kCIContextUseSoftwareRenderer: true])
+            let cgimg = softwareContext.createCGImage(imageToSave, fromRect:imageToSave.extent())
+            
+            let library = ALAssetsLibrary()
+            library.writeImageToSavedPhotosAlbum(cgimg, metadata:imageToSave.properties(), completionBlock:nil)
+        })
+        
+        let saveAction = UIAlertAction(title: "Desfazer", style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .Cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        optionMenu.addAction(deleteAction)
+        optionMenu.addAction(saveAction)
+        optionMenu.addAction(cancelAction)
+        
+        self.presentViewController(optionMenu, animated: true, completion: nil)
     }
     
     @IBAction func changeContrast(sender: AnyObject) {
@@ -119,16 +134,6 @@ class DisciplineDetailViewController: UIViewController {
             .createCGImage(controlsFilter.outputImage, fromRect:controlsFilter.outputImage.extent()))!
         
         self.classPicture.image = displayImage
-    }
-    
-    func tappedImage() {
-        self.navigationController?.navigationBar.hidden = !self.hideTopBar
-        self.hideTopBar = !self.hideTopBar
-        self.setNeedsStatusBarAppearanceUpdate()
-    }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return self.hideTopBar
     }
 }
 

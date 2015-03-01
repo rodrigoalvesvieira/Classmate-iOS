@@ -10,16 +10,22 @@ import UIKit
 import AVFoundation
 
 class FirstViewController: UIViewController {
-    @IBOutlet weak var takePictureButton: UIButton!
-
+    // Constants
     let captureSession = AVCaptureSession()
     
+    // Variables
     var stillImageOutput: AVCaptureStillImageOutput?
     var previewLayer : AVCaptureVideoPreviewLayer?
     
     // If we find a device we'll store it here for later use
     var captureDevice : AVCaptureDevice?
     
+    // Outlets
+    @IBOutlet weak var takePictureButton: UIButton!
+    
+    @IBOutlet var previewImage: UIView!
+    
+    // Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,11 +51,11 @@ class FirstViewController: UIViewController {
         
     }
     
-    @IBOutlet var previewImage: UIView!
-    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
+    // Custom methods
     
     func updateDeviceSettings(focusValue : Float, isoValue : Float) {
         if let device = captureDevice {
@@ -116,20 +122,10 @@ class FirstViewController: UIViewController {
         captureSession.startRunning()
     }
     
+    // Action methods
     @IBAction func takePicture(sender: AnyObject) {
-        NSLog("clicou")
-        
         var imageView = UIImageView()
-        
-//        previewImage
-        
         stillImageOutput = AVCaptureStillImageOutput()
-        
-        
-        
-        
-//        imageView.image = stillImageOutput as UIImage
-
     }
     
 }
