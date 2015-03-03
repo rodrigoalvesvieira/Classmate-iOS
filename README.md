@@ -1,4 +1,4 @@
-# Classboard iOS [![App Store](https://dl.dropboxusercontent.com/u/7743293/appstore.png)](http://sgtpeppers.me)
+# Classmate iOS [![App Store](https://dl.dropboxusercontent.com/u/7743293/appstore.png)](http://sgtpeppers.me)
 
 An iOS app in Swift made by me, Rodrigo Alves, for the class of [Introduction to Multimedia - IF687] at the [Informatics Center at UFPE].
 
@@ -21,7 +21,7 @@ To install the [Cocoapods] dependencies, run:
 
 `$ pod install`
 
-Open `Classboard.xcworkspace` and build!
+Open `Classmate.xcworkspace` and build!
 
 ## Art & Logo
 
